@@ -6,6 +6,7 @@ TheTransitionZone is a structured, neutral source for pickleball paddle reviews 
 
 ## Key features
 
+- Side-by-side paddle comparison. Built to answer the "what should my next paddle be?" question. Stack any paddles head to head on weight, feel, power, control, spin, and durability over a year of real play.
 - Ratings owned by the community. A reviewer must add a paddle to their bag before they can rate it. Every paddle's score is calculated from verified owners only.
 - Bag and wishlist. Each user curates the paddles they own and the ones they have their eye on. Profiles are public so other players can follow what someone actually plays with.
 - Reviews that mature with the paddle. Owners post a first impression, then update the review at one month, three months, a year. The full revision history stays visible, so the community sees an honest arc of how a paddle holds up.

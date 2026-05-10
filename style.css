@@ -163,6 +163,30 @@ h1 {
   font-size: 1rem;
 }
 
+.callout {
+  margin: 0 0 1.75rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-elevated);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.callout-q {
+  margin: 0 0 0.45rem;
+  font-size: 1.1875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  line-height: 1.3;
+}
+
+.callout-a {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
 .features {
   list-style: none;
   padding: 0;
