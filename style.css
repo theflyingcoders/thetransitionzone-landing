@@ -271,8 +271,35 @@ input[name="_gotcha"] {
   opacity: 0;
 }
 
-.fineprint {
+.creator-optin {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
   margin: 0.9rem 0 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--fg);
+}
+
+.creator-optin input[type="checkbox"] {
+  margin: 0.2rem 0 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.creator-help {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--fg-tertiary);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.fineprint {
+  margin: 0.75rem 0 0;
   font-size: 0.8125rem;
   color: var(--fg-tertiary);
 }
