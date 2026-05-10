@@ -13,9 +13,9 @@ TheTransitionZone is a structured, neutral source for pickleball paddle reviews,
 
 ## Pages
 
-- [Landing page](https://theflyingcoders.github.io/thetransitionzone-landing/): single-page placeholder with the "register interest" email form
-- [Sitemap](https://theflyingcoders.github.io/thetransitionzone-landing/sitemap.xml)
-- [robots.txt](https://theflyingcoders.github.io/thetransitionzone-landing/robots.txt)
+- [Landing page](https://thetransitionzone.app/): single-page placeholder with the "register interest" email form
+- [Sitemap](https://thetransitionzone.app/sitemap.xml)
+- [robots.txt](https://thetransitionzone.app/robots.txt)
 
 ## Source
 

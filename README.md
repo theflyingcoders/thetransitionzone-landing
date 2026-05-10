@@ -26,7 +26,7 @@ After pushing to GitHub:
 1. Repo Settings → Pages
 2. Source: **Deploy from a branch**
 3. Branch: `main`, folder: `/ (root)`
-4. Save. Site publishes at `https://theflyingcoders.github.io/thetransitionzone-landing/` within a minute.
+4. Save. Site publishes at `https://thetransitionzone.app/` (custom domain via the `CNAME` file).
 
 ## Local preview
 

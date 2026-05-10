@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theflyingcoders.github.io/thetransitionzone-landing/sitemap.xml
+Sitemap: https://thetransitionzone.app/sitemap.xml
