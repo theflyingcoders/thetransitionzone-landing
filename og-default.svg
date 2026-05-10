@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <defs>
+    <style>
+      .word { font: 800 72px -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #FFFFFF; letter-spacing: -1px; }
+      .word-z { fill: #10B981; }
+      .tag { font: 600 21px -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #94A3B8; letter-spacing: 4.5px; }
+    </style>
+  </defs>
+  <g transform="translate(395,205)">
+    <path d="M0 50 L26 14 L46 14 L20 50 L46 86 L26 86 Z" fill="#10B981" opacity="0.32"/>
+    <path d="M40 50 L66 14 L86 14 L60 50 L86 86 L66 86 Z" fill="#10B981" opacity="0.62"/>
+    <path d="M80 50 L106 14 L126 14 L100 50 L126 86 L106 86 Z" fill="#10B981"/>
+    <g transform="translate(160,50)">
+      <circle r="14" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.6"/>
+      <circle cx="-5" cy="-5" r="1.6" fill="#0F172A"/>
+      <circle cx="5" cy="-6" r="1.6" fill="#0F172A"/>
+      <circle cx="7" cy="2" r="1.6" fill="#0F172A"/>
+      <circle cx="-2" cy="6" r="1.6" fill="#0F172A"/>
+      <circle cx="-7" cy="2" r="1.6" fill="#0F172A"/>
+    </g>
+  </g>
+  <text text-anchor="middle" x="600" y="430" class="word">TheTransition<tspan class="word-z">Zone</tspan></text>
+  <text text-anchor="middle" x="600" y="478" class="tag">EQUIPMENT REVIEWS BY THE PICKLEBALL COMMUNITY</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-label="TheTransitionZone primary lockup">
+  <defs>
+    <style>
+      .word { font: 800 40px -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #0F172A; letter-spacing: -0.5px; }
+      .word-z { fill: #10B981; }
+      .tag { font: 600 11px -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #64748B; letter-spacing: 2.4px; }
+    </style>
+  </defs>
+
+  <g transform="translate(34,32)">
+    <path d="M0 50 L26 14 L46 14 L20 50 L46 86 L26 86 Z" fill="#10B981" opacity="0.32"/>
+    <path d="M40 50 L66 14 L86 14 L60 50 L86 86 L66 86 Z" fill="#10B981" opacity="0.62"/>
+    <path d="M80 50 L106 14 L126 14 L100 50 L126 86 L106 86 Z" fill="#10B981"/>
+    <g transform="translate(144,50)">
+      <circle r="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.6"/>
+      <circle cx="-4" cy="-4" r="1.4" fill="#0F172A"/>
+      <circle cx="4" cy="-5" r="1.4" fill="#0F172A"/>
+      <circle cx="6" cy="2" r="1.4" fill="#0F172A"/>
+      <circle cx="-2" cy="5" r="1.4" fill="#0F172A"/>
+      <circle cx="-6" cy="2" r="1.4" fill="#0F172A"/>
+    </g>
+  </g>
+
+  <g transform="translate(220,0)">
+    <text x="0" y="92" class="word">TheTransition<tspan class="word-z">Zone</tspan></text>
+    <text x="2" y="116" class="tag">EQUIPMENT REVIEWS BY THE PICKLEBALL COMMUNITY</text>
+  </g>
+</svg>

@@ -4,36 +4,67 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TheTransitionZone — honest pickleball paddle reviews</title>
-  <meta name="description" content="A community-driven hub for honest, ownership-verified pickleball paddle reviews. Coming soon." />
+  <meta name="description" content="The trusted source for pickleball paddle reviews. Community-verified, ownership-gated, no brand bias. Coming soon." />
   <meta property="og:title" content="TheTransitionZone" />
-  <meta property="og:description" content="Honest, community-verified pickleball paddle reviews. Coming soon." />
+  <meta property="og:description" content="The trusted source for pickleball paddle reviews. Community-verified, ownership-gated, no brand bias." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="og-default.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main>
-    <header>
-      <h1>TheTransitionZone</h1>
-      <p class="tagline">Honest, community-verified pickleball paddle reviews.</p>
-    </header>
+    <section class="hero">
+      <img src="tz-stacked.svg" alt="TheTransitionZone" class="logo" width="480" height="240" />
 
-    <section class="pitch">
-      <p>
-        Reddit threads disappear. Creator reviews are biased. Retailer reviews
-        are unverified. We are building the missing piece: a neutral, structured
-        hub where every review comes from someone who actually owns the paddle.
+      <h1>
+        The trusted source for<br/>
+        pickleball paddle reviews
+      </h1>
+
+      <p class="subhead">
+        Community-verified reviews from real owners. Durability tracking. No brand bias.
       </p>
+
+      <div class="badge">Launching soon</div>
+    </section>
+
+    <section class="card pitch">
+      <p class="lead">
+        Reddit threads disappear. Creator reviews are biased. Retailer reviews are unverified. We are building the missing piece: a neutral, structured hub where every review comes from someone who actually owns the paddle.
+      </p>
+
       <ul class="features">
-        <li><strong>Ownership-gated reviews.</strong> Add it to your bag before you rate it.</li>
-        <li><strong>Owners vs. tried-it, kept separate.</strong> Casual hits never blend into the main score.</li>
-        <li><strong>Trust scoring.</strong> Helpful reviewers rise; low-quality ones get filtered.</li>
-        <li><strong>Longevity tracking.</strong> See how paddles actually hold up over months of play.</li>
+        <li>
+          <span class="feat-title">Ownership-gated reviews.</span>
+          <span class="feat-body">Add it to your bag before you rate it.</span>
+        </li>
+        <li>
+          <span class="feat-title">Owners and tried-it, kept separate.</span>
+          <span class="feat-body">Casual hits never blend into the main score.</span>
+        </li>
+        <li>
+          <span class="feat-title">Trust scoring.</span>
+          <span class="feat-body">Helpful reviewers rise. Low-quality ones get filtered.</span>
+        </li>
+        <li>
+          <span class="feat-title">Longevity tracking.</span>
+          <span class="feat-body">See how paddles actually hold up over months of play.</span>
+        </li>
       </ul>
     </section>
 
-    <section class="signup">
+    <section class="card signup">
       <h2>Get notified when we launch</h2>
-      <p>Drop your email and we will let you know the moment the site is live.</p>
+      <p class="signup-sub">Drop your email and we will let you know the moment the site is live.</p>
 
       <!--
         FORMSPREE SETUP
@@ -46,30 +77,40 @@
         class="signup-form"
       >
         <label for="email" class="visually-hidden">Email address</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="you@example.com"
-          required
-          autocomplete="email"
-        />
-        <button type="submit">Notify me</button>
-        <!-- Formspree: redirect target after submit (optional) -->
-        <input type="hidden" name="_next" value="https://thetransitionzone.github.io/thanks" />
-        <!-- Formspree honeypot to reduce spam -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="signup-row">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+          <button type="submit">Notify me</button>
+        </div>
+        <input type="hidden" name="_next" value="https://theflyingcoders.github.io/thetransitionzone-landing/?ok=1" />
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
       </form>
       <p class="fineprint">One email when we launch. No newsletter, no spam.</p>
     </section>
 
     <footer>
-      <p>&copy; <span id="year"></span> TheTransitionZone. Built with care for the pickleball community.</p>
+      <p>&copy; <span id="year"></span> TheTransitionZone. Built for the pickleball community.</p>
     </footer>
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    if (new URLSearchParams(location.search).get('ok') === '1') {
+      const form = document.querySelector('.signup-form');
+      const sub = document.querySelector('.signup-sub');
+      const fine = document.querySelector('.fineprint');
+      if (form && sub) {
+        form.style.display = 'none';
+        sub.textContent = 'Thanks! You are on the list. We will be in touch.';
+        if (fine) fine.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>

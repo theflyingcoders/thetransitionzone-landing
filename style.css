@@ -1,13 +1,67 @@
+/* Brand tokens, mirrored from the main site (static/css/input.css). */
 :root {
-  --bg: #0f1419;
-  --bg-card: #161c24;
-  --fg: #e6ecef;
-  --fg-muted: #8a99a6;
-  --accent: #ffb347;
-  --accent-fg: #1a1a1a;
-  --border: #2a323d;
-  --radius: 8px;
-  --max-width: 640px;
+  --surface: #ffffff;
+  --surface-elevated: #f8fafc;
+  --surface-muted: #f1f5f9;
+  --surface-muted-strong: #e2e8f0;
+
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --fg-tertiary: #94a3b8;
+  --fg-inverse: #ffffff;
+
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+
+  --accent: #10b981;
+  --accent-strong: #059669;
+  --accent-fg: #ffffff;
+
+  --cta-strong: #1e293b;
+  --cta-strong-hover: #0f172a;
+  --cta-strong-fg: #ffffff;
+
+  --accent-soft-bg: #ecfdf5;
+  --accent-soft-fg: #047857;
+  --accent-soft-border: #a7f3d0;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+  --max-width: 760px;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji",
+    "Segoe UI Emoji", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #0b1220;
+    --surface-elevated: #111a2c;
+    --surface-muted: #16213a;
+    --surface-muted-strong: #1e293b;
+
+    --fg: #f1f5f9;
+    --fg-muted: #cbd5e1;
+    --fg-tertiary: #94a3b8;
+    --fg-inverse: #0f172a;
+
+    --line: #334155;
+    --line-strong: #475569;
+
+    --accent: #34d399;
+    --accent-strong: #10b981;
+    --accent-fg: #052e1f;
+
+    --cta-strong: #f1f5f9;
+    --cta-strong-hover: #e2e8f0;
+    --cta-strong-fg: #0f172a;
+
+    --accent-soft-bg: #0a2920;
+    --accent-soft-fg: #6ee7b7;
+    --accent-soft-border: #064e3b;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -15,46 +69,86 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background: var(--surface);
   color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 4rem 1.5rem 3rem;
+  padding: 3rem 1.25rem 2.5rem;
 }
 
-header {
+/* Hero */
+.hero {
   text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-h1 {
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  margin: 0 0 0.5rem;
-  letter-spacing: -0.02em;
-}
-
-.tagline {
-  color: var(--fg-muted);
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-.pitch {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 1.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--line);
   margin-bottom: 2rem;
 }
 
-.pitch p {
-  margin: 0 0 1.25rem;
+.logo {
+  width: min(360px, 80%);
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+h1 {
+  font-size: clamp(1.875rem, 5.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+
+.subhead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--fg-tertiary);
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft-fg);
+  background: var(--accent-soft-bg);
+  border: 1px solid var(--accent-soft-border);
+  border-radius: var(--radius-pill);
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pitch .lead {
+  margin: 0 0 1.5rem;
+  color: var(--fg-muted);
+  font-size: 1rem;
 }
 
 .features {
@@ -62,96 +156,127 @@ h1 {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .features li {
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
   position: relative;
 }
 
 .features li::before {
-  content: "›";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--accent);
-  font-weight: bold;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: rotate(45deg);
 }
 
-.features strong {
+.feat-title {
+  font-weight: 700;
   color: var(--fg);
 }
 
-.signup {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  margin-bottom: 2rem;
+.feat-body {
+  color: var(--fg-muted);
 }
 
+/* Signup */
 .signup h2 {
   margin: 0 0 0.5rem;
-  font-size: 1.35rem;
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--fg);
 }
 
-.signup > p {
+.signup-sub {
   margin: 0 0 1.25rem;
   color: var(--fg-muted);
 }
 
 .signup-form {
+  margin: 0;
+}
+
+.signup-row {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.signup-row:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 2px 16px rgba(16, 185, 129, 0.15);
 }
 
 .signup-form input[type="email"] {
   flex: 1 1 240px;
   min-width: 0;
-  padding: 0.75rem 0.9rem;
-  font-size: 1rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--bg);
+  padding: 0.85rem 1rem;
+  font-size: 0.9375rem;
+  border: 0;
+  background: transparent;
   color: var(--fg);
   font-family: inherit;
+  outline: none;
 }
 
-.signup-form input[type="email"]:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
-  border-color: var(--accent);
+.signup-form input[type="email"]::placeholder {
+  color: var(--fg-tertiary);
 }
 
 .signup-form button {
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  background: var(--accent);
-  color: var(--accent-fg);
+  padding: 0.85rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: var(--cta-strong);
+  color: var(--cta-strong-fg);
   border: 0;
-  border-radius: var(--radius);
   cursor: pointer;
   font-family: inherit;
-  transition: filter 0.15s ease;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
 }
 
 .signup-form button:hover {
-  filter: brightness(1.08);
+  background: var(--cta-strong-hover);
+}
+
+input[name="_gotcha"] {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 
 .fineprint {
   margin: 0.9rem 0 0;
-  font-size: 0.875rem;
-  color: var(--fg-muted);
+  font-size: 0.8125rem;
+  color: var(--fg-tertiary);
 }
 
+/* Footer */
 footer {
   text-align: center;
-  color: var(--fg-muted);
-  font-size: 0.85rem;
-  margin-top: 3rem;
+  color: var(--fg-tertiary);
+  font-size: 0.8125rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+footer p {
+  margin: 0;
 }
 
 .visually-hidden {
@@ -166,12 +291,9 @@ footer {
   border: 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fafafa;
-    --bg-card: #ffffff;
-    --fg: #1a1f24;
-    --fg-muted: #5c6873;
-    --border: #e3e8ed;
-  }
+@media (max-width: 480px) {
+  main { padding: 2rem 1rem 2rem; }
+  .card { padding: 1.25rem; }
+  .signup-row { flex-direction: column; }
+  .signup-form button { width: 100%; }
 }
