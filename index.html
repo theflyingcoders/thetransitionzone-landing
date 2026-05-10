@@ -521,67 +521,37 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const FORMSPREE = 'https://formspree.io/f/xaqvlgvw';
-
-  function wireForm(formId, emailId, creatorId, okId) {
+  // Standard form POST to Formspree (AJAX is blocked unless reCAPTCHA is
+  // disabled on the form's settings). Rewrite each form's _next so
+  // Formspree redirects back to the form we came from, carrying the
+  // creator flag through as a query param.
+  function wireForm(formId, creatorId) {
     const form = document.getElementById(formId);
     if (!form) return;
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const emailEl = document.getElementById(emailId);
-      const creatorEl = document.getElementById(creatorId);
-      const email = emailEl.value.trim();
-      const creator = creatorEl.checked;
-      if (!email) return;
-
-      const button = form.querySelector('button[type="submit"]');
-      const originalLabel = button.innerHTML;
-      button.disabled = true;
-      button.innerHTML = 'Sending…';
-
-      const ok = document.getElementById(okId);
-
-      try {
-        const data = new FormData();
-        data.append('email', email);
-        if (creator) data.append('creator', 'yes');
-        const res = await fetch(FORMSPREE, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: data,
-        });
-        if (!res.ok) throw new Error('submit failed');
-
-        if (ok) {
-          ok.classList.remove('err');
-          ok.style.display = 'block';
-          ok.innerHTML = creator
-            ? "<strong>You're in, and flagged as a creator.</strong> Our team will reach out about partnership directly."
-            : "<strong>You're in.</strong> Watch your inbox. We'll be in touch.";
-        }
-        emailEl.value = '';
-        creatorEl.checked = false;
-      } catch (err) {
-        if (ok) {
-          ok.classList.add('err');
-          ok.style.display = 'block';
-          ok.innerHTML = "<strong>Something went wrong.</strong> Try again in a moment.";
-        }
-      } finally {
-        button.disabled = false;
-        button.innerHTML = originalLabel;
+    form.addEventListener('submit', () => {
+      const creator = document.getElementById(creatorId).checked;
+      const next = form.querySelector('input[name="_next"]');
+      if (next) {
+        const params = new URLSearchParams();
+        params.set('ok', '1');
+        if (creator) params.set('creator', '1');
+        next.value = `https://thetransitionzone.app/?${params.toString()}#${formId}`;
       }
     });
   }
+  wireForm('signup', 'creator-hero');
+  wireForm('signup-final', 'creator-final');
 
-  wireForm('signup', 'email-hero', 'creator-hero', 'ok-hero');
-  wireForm('signup-final', 'email-final', 'creator-final', 'ok-final');
-
-  // If Formspree fell back to non-JS POST and bounced us through _next.
-  if (new URLSearchParams(location.search).get('ok') === '1') {
+  // On return from Formspree, show the right success message in every
+  // visible form (the hash anchor handles scroll-to-form for free).
+  const params = new URLSearchParams(location.search);
+  if (params.get('ok') === '1') {
+    const isCreator = params.get('creator') === '1';
     document.querySelectorAll('.ok-msg').forEach(ok => {
       ok.style.display = 'block';
-      ok.innerHTML = "<strong>You're in.</strong> Watch your inbox. We'll be in touch.";
+      ok.innerHTML = isCreator
+        ? "<strong>You're in, and flagged as a creator.</strong> Our team will reach out about partnership directly."
+        : "<strong>You're in.</strong> Watch your inbox. We'll be in touch.";
     });
   }
 </script>
