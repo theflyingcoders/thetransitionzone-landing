@@ -85,7 +85,9 @@ img, svg { display: block; }
   position: relative; overflow: hidden;
 }
 .hero .eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 10px;
+  width: fit-content;
+  margin-left: auto; margin-right: auto;
   padding: 7px 14px; border-radius: 999px;
   background: var(--emerald-soft); color: var(--emerald-dk);
   font-size: 12px; font-weight: 700; letter-spacing: 0.4px;
@@ -119,7 +121,7 @@ img, svg { display: block; }
   font-size: 0;
   line-height: 1;
   letter-spacing: 0;
-  margin-bottom: 36px;
+  margin-bottom: 12px;
 }
 .hero h1.hero-logo img {
   display: block;
@@ -144,7 +146,7 @@ img, svg { display: block; }
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .hero { padding: 24px 0 40px; }
   .hero .eyebrow { margin-bottom: 20px; }
-  .hero h1.hero-logo { margin-bottom: 24px; }
+  .hero h1.hero-logo { margin-bottom: 10px; }
   .hero p.lede { margin-bottom: 0; }
 }
 
