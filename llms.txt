@@ -1,19 +1,20 @@
 # TheTransitionZone
 
-> Community-driven hub for honest pickleball paddle reviews. Every review comes from a verified owner of the paddle. Currently a pre-launch landing page collecting interest emails.
+> Community-driven hub for honest pickleball paddle reviews and ratings. Every score is owned by verified owners. Brands cannot pay to influence rankings. Currently a pre-launch landing page collecting interest emails and creator partnership requests.
 
-TheTransitionZone is a structured, neutral source for pickleball paddle reviews, sometimes described as "Stack Overflow for paddles." It addresses three gaps in the current landscape: Reddit threads disappear, creator reviews can be biased and rarely follow up on long-term paddle durability, and retailer reviews are unverified. The platform is in active development. The page at this URL is a placeholder where visitors can register their email to be notified when the site launches.
+TheTransitionZone is a structured, neutral source for pickleball paddle reviews and ratings, sometimes described as "Stack Overflow for paddles." It addresses three gaps in the current landscape: Reddit threads disappear, creator reviews can be biased and rarely follow up on long-term paddle durability, and retailer reviews are unverified. The platform is in active development. The page at this URL is a placeholder where visitors can register their email to be notified when the site launches, and where creators can opt in to a partnership conversation.
 
-## Key differentiators
+## Key features
 
-- Ownership-gated reviews. A reviewer must add a paddle to their bag before they can rate it, so reviews come from real owners.
-- Owner reviews and "tried it" reviews are aggregated separately, so casual hits never blend into a paddle's main score.
-- Trust scoring. Helpful reviewers rise. Low-quality reviewers get filtered.
-- Paddle longevity tracking. Owners log how long a paddle lasted and why they retired it, producing real-world durability data per paddle.
+- Ratings owned by the community. A reviewer must add a paddle to their bag before they can rate it. Every paddle's score is calculated from verified owners only.
+- Bag and wishlist. Each user curates the paddles they own and the ones they have their eye on. Profiles are public so other players can follow what someone actually plays with.
+- Reviews that mature with the paddle. Owners post a first impression, then update the review at one month, three months, a year. The full revision history stays visible, so the community sees an honest arc of how a paddle holds up.
+- Zero brand boosting. Brands cannot pay to climb the rankings, weight scores, or remove negative reviews. The community owns the score. Ads and partnerships, if any, are transparent and clearly labelled.
+- Creator partnerships. We partner with paddle review creators to feature their deep dives, demos, and lab data alongside community ratings. Creator content is always clearly labelled and never counts toward a paddle's score, keeping the community signal clean.
 
 ## Pages
 
-- [Landing page](https://thetransitionzone.app/): single-page placeholder with the "register interest" email form
+- [Landing page](https://thetransitionzone.app/): single-page placeholder with the "register interest" email form and a creator opt-in checkbox
 - [Sitemap](https://thetransitionzone.app/sitemap.xml)
 - [robots.txt](https://thetransitionzone.app/robots.txt)
 
@@ -23,4 +24,4 @@ TheTransitionZone is a structured, neutral source for pickleball paddle reviews,
 
 ## Status
 
-Pre-launch. Email signups post to Formspree; the form owner exports submissions as CSV from the Formspree dashboard. The full site is under active development. Launch date is to be announced; subscribers on the interest list will be notified when the platform goes live.
+Pre-launch. Email signups post to Formspree; submissions where the creator opt-in is ticked include a flag the form owner uses to filter partnership candidates from the regular interest list. The full site is under active development. Launch date is to be announced; subscribers on the interest list will be notified when the platform goes live.
