@@ -137,6 +137,9 @@ img, svg { display: block; }
   display: grid; grid-template-columns: 1.15fr 0.85fr;
   gap: 72px; align-items: center;
 }
+/* Same min-width: 0 fix as .bag-compare: stops the email form's intrinsic
+   content min-width from forcing the grid column wider than the viewport. */
+.hero-grid > * { min-width: 0; }
 @media (max-width: 920px) {
   .hero-grid { grid-template-columns: 1fr; gap: 56px; }
   .hero { padding: 64px 0 56px; }
@@ -211,7 +214,7 @@ section.feature.warm { background: var(--warm); border-top: none; }
 }
 .feature h2 {
   font-size: clamp(36px, 5.4vw, 72px);
-  font-weight: 800; line-height: 1; letter-spacing: -2px;
+  font-weight: 800; line-height: 1; letter-spacing: -0.5px;
   margin-bottom: 24px; max-width: 880px;
   text-wrap: balance;
 }
@@ -224,6 +227,7 @@ section.feature.warm { background: var(--warm); border-top: none; }
 .feature.dark p.lede { color: rgba(255,255,255,0.6); }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.grid-2 > * { min-width: 0; }
 .grid-2.reverse > :first-child { order: 2; }
 @media (max-width: 920px) {
   .grid-2, .grid-2.reverse { grid-template-columns: 1fr; gap: 56px; }
@@ -468,7 +472,7 @@ section.feature.warm { background: var(--warm); border-top: none; }
 @media (max-width: 920px) { .final-cta { padding: 80px 0; } }
 .final-cta h2 {
   font-size: clamp(40px, 6vw, 84px);
-  font-weight: 800; letter-spacing: -2.5px; line-height: 1;
+  font-weight: 800; letter-spacing: -0.5px; line-height: 1;
   margin-bottom: 20px; text-wrap: balance;
 }
 .final-cta h2 .accent { color: var(--emerald); }
