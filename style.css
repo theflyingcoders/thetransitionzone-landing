@@ -321,6 +321,13 @@ section.feature.warm { background: var(--warm); border-top: none; }
   display: grid; grid-template-columns: 1fr 1.1fr;
   gap: 56px; align-items: start;
 }
+/* CSS Grid items default to min-width: auto, which is their content's
+   intrinsic size. The compare table sets min-width: 480px on its rows
+   for the side-by-side comparison; without this override, that 480px
+   propagates upward through the grid and forces the whole page wider
+   than narrow viewports. With min-width: 0, the grid column respects
+   its fr-allocation and .compare's own overflow-x scroll kicks in. */
+.bag-compare > * { min-width: 0; }
 @media (max-width: 920px) {
   .bag-compare { grid-template-columns: 1fr; }
 }
