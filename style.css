@@ -114,6 +114,20 @@ img, svg { display: block; }
   text-wrap: balance;
 }
 .hero h1 .accent { color: var(--emerald); }
+
+.hero h1.hero-logo {
+  font-size: 0;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 36px;
+}
+.hero h1.hero-logo img {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto;
+}
 .hero p.lede {
   font-size: clamp(17px, 1.8vw, 22px);
   color: var(--mute); max-width: 620px;
@@ -215,6 +229,31 @@ section.feature.warm { background: var(--warm); border-top: none; }
   .grid-2, .grid-2.reverse { grid-template-columns: 1fr; gap: 56px; }
   .grid-2.reverse > :first-child { order: 0; }
   section.feature { padding: 80px 0; }
+}
+
+/* ── Mobile: center text blocks now that the page is single-column.
+   The desktop split layouts justify left-alignment; on mobile the
+   text floats next to empty space, so it reads better centered. */
+@media (max-width: 920px) {
+  .hero-grid > div:first-child { text-align: center; }
+  .hero h1,
+  .hero p.lede { margin-left: auto; margin-right: auto; }
+
+  .grid-2 > div { text-align: center; }
+  .grid-2 .answer-card,
+  .grid-2 .timeline { text-align: left; }
+  .feature h2,
+  .feature p.lede { margin-left: auto; margin-right: auto; }
+
+  .feature > .container > div[style*="max-width"] {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bag-label,
+  .bag-heading,
+  .compare-eyebrow { text-align: center; }
 }
 
 /* ── Answer card (find next paddle) ───── */
