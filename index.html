@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TheTransitionZone — honest pickleball paddle reviews</title>
+  <meta name="description" content="A community-driven hub for honest, ownership-verified pickleball paddle reviews. Coming soon." />
+  <meta property="og:title" content="TheTransitionZone" />
+  <meta property="og:description" content="Honest, community-verified pickleball paddle reviews. Coming soon." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>TheTransitionZone</h1>
+      <p class="tagline">Honest, community-verified pickleball paddle reviews.</p>
+    </header>
+
+    <section class="pitch">
+      <p>
+        Reddit threads disappear. Creator reviews are biased. Retailer reviews
+        are unverified. We are building the missing piece: a neutral, structured
+        hub where every review comes from someone who actually owns the paddle.
+      </p>
+      <ul class="features">
+        <li><strong>Ownership-gated reviews.</strong> Add it to your bag before you rate it.</li>
+        <li><strong>Owners vs. tried-it, kept separate.</strong> Casual hits never blend into the main score.</li>
+        <li><strong>Trust scoring.</strong> Helpful reviewers rise; low-quality ones get filtered.</li>
+        <li><strong>Longevity tracking.</strong> See how paddles actually hold up over months of play.</li>
+      </ul>
+    </section>
+
+    <section class="signup">
+      <h2>Get notified when we launch</h2>
+      <p>Drop your email and we will let you know the moment the site is live.</p>
+
+      <!--
+        FORMSPREE SETUP
+        Replace REPLACE_WITH_FORMSPREE_ENDPOINT below with your form endpoint,
+        e.g. https://formspree.io/f/xyzabc123
+      -->
+      <form
+        action="REPLACE_WITH_FORMSPREE_ENDPOINT"
+        method="POST"
+        class="signup-form"
+      >
+        <label for="email" class="visually-hidden">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit">Notify me</button>
+        <!-- Formspree: redirect target after submit (optional) -->
+        <input type="hidden" name="_next" value="https://thetransitionzone.github.io/thanks" />
+        <!-- Formspree honeypot to reduce spam -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      </form>
+      <p class="fineprint">One email when we launch. No newsletter, no spam.</p>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> TheTransitionZone. Built with care for the pickleball community.</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
