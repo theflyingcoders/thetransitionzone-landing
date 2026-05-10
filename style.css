@@ -113,8 +113,20 @@ h1 {
   color: var(--fg);
 }
 
-.subhead {
+.kicker {
+  margin: 0 0 0.85rem;
   font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent-strong);
+}
+
+@media (prefers-color-scheme: dark) {
+  .kicker { color: var(--accent); }
+}
+
+.subhead {
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--fg-tertiary);
   max-width: 520px;
