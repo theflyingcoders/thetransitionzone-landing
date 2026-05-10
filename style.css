@@ -277,6 +277,44 @@ input[name="_gotcha"] {
   color: var(--fg-tertiary);
 }
 
+/* FAQ */
+.faq h2 {
+  margin: 0 0 1rem;
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.faq-list {
+  margin: 0;
+  padding: 0;
+}
+
+.faq-item {
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.faq-item dt {
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.faq-item dd {
+  margin: 0;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
 /* Footer */
 footer {
   text-align: center;
