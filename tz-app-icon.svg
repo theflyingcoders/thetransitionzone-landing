@@ -6,13 +6,6 @@
     <path d="M48 60 L80 16 L104 16 L72 60 L104 104 L80 104 Z" fill="#10B981" opacity="0.62"/>
     <path d="M96 60 L128 16 L152 16 L120 60 L152 104 L128 104 Z" fill="#10B981"/>
 
-    <g transform="translate(176,60)">
-      <circle r="14" fill="#FFFFFF"/>
-      <circle cx="-5" cy="-4" r="1.6" fill="#0F172A"/>
-      <circle cx="5" cy="-6" r="1.6" fill="#0F172A"/>
-      <circle cx="7" cy="3" r="1.6" fill="#0F172A"/>
-      <circle cx="-3" cy="6" r="1.6" fill="#0F172A"/>
-      <circle cx="-7" cy="2" r="1.6" fill="#0F172A"/>
-    </g>
+    <g transform="translate(176,60)"><circle r="21" fill="#10B981"/></g>
   </g>
 </svg>
