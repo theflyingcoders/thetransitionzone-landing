@@ -2,3 +2,6 @@
 .idea/
 .vscode/
 *.swp
+
+# Design references — kept locally, not deployed
+design/

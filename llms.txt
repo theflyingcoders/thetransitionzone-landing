@@ -1,21 +1,21 @@
 # TheTransitionZone
 
-> Community-driven hub for honest pickleball paddle reviews and ratings. Every score is owned by verified owners. Brands cannot pay to influence rankings. Currently a pre-launch landing page collecting interest emails and creator partnership requests.
+> Community-driven hub for honest pickleball paddle reviews. The trusted source for what's in your bag, community-verified, durability-tracked, no brand bias, no paid scores. Currently a pre-launch landing page collecting interest emails and creator partnership requests.
 
-TheTransitionZone is a structured, neutral source for pickleball paddle reviews and ratings, sometimes described as "Stack Overflow for paddles." It addresses three gaps in the current landscape: Reddit threads disappear, creator reviews can be biased and rarely follow up on long-term paddle durability, and retailer reviews are unverified. The platform is in active development. The page at this URL is a placeholder where visitors can register their email to be notified when the site launches, and where creators can opt in to a partnership conversation.
+TheTransitionZone is a structured, neutral source for pickleball paddle reviews. The brand promise is honest information: every review is tied to a verified owner, reviewers earn trust over time, and brands cannot pay to influence rankings. The platform is in active development. The page at this URL is a placeholder where visitors can register their email to be notified when the site launches, and where creators can opt in to a partnership conversation.
 
 ## Key features
 
-- Side-by-side paddle comparison. Built to answer the "what should my next paddle be?" question. Stack any paddles head to head on weight, feel, power, control, spin, and durability over a year of real play.
-- Ratings owned by the community. A reviewer must add a paddle to their bag before they can rate it. Every paddle's score is calculated from verified owners only.
-- Bag and wishlist. Each user curates the paddles they own and the ones they have their eye on. Profiles are public so other players can follow what someone actually plays with.
-- Reviews that mature with the paddle. Owners post a first impression, then update the review at one month, three months, a year. The full revision history stays visible, so the community sees an honest arc of how a paddle holds up.
-- Zero brand boosting. Brands cannot pay to climb the rankings, weight scores, or remove negative reviews. The community owns the score. Ads and partnerships, if any, are transparent and clearly labelled.
-- Creator partnerships. We partner with paddle review creators to feature their deep dives, demos, and lab data alongside community ratings. Creator content is always clearly labelled and never counts toward a paddle's score, keeping the community signal clean.
+- Find your next paddle. Filter by play style, level, budget, and the dimensions players care about (control, power, spin, touch). Every paddle is scored on the dimensions that matter, ranked by what verified owners at your level actually say.
+- Community-verified reviews. Every review is tied to a verified owner. Reviewers earn trust over time, with weight given to those whose past scores correlate with the community consensus. Experts and creators have a separate, transparent tier so their voices are visible without polluting the community score.
+- Durability check-ins. The platform pings owners at 3, 6, 9, and 12 months to capture how a paddle is holding up: edge guard wear, dead spots, performance drift. These check-ins produce the only honest durability rating in pickleball.
+- Your bag and head-to-head compare. Every user keeps a public bag of every paddle they have owned, including retired ones. Any two paddles can be compared head to head on every spec, score, and dimension.
+- No brand bias, no paid scores. Brands cannot pay to climb the rankings, weight scores, or remove negative reviews. Any ads or partnerships are clearly labelled and never alter community scores.
+- Creator partnerships. Creators can opt in to be contacted about featuring their reviews and lab data alongside community ratings. Creator content is always labelled and never counts toward a paddle's score, keeping the community signal clean.
 
 ## Pages
 
-- [Landing page](https://thetransitionzone.app/): single-page placeholder with the "register interest" email form and a creator opt-in checkbox
+- [Landing page](https://thetransitionzone.app/): single scroll page with nav, hero ("What's in your bag?"), four feature sections, a final CTA, and footer. Two email forms (hero + final CTA), both posting to Formspree, both with a creator opt-in checkbox.
 - [Sitemap](https://thetransitionzone.app/sitemap.xml)
 - [robots.txt](https://thetransitionzone.app/robots.txt)
 
