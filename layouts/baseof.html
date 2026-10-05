@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+{{ partial "head.html" (dict "page" .) }}
+</head>
+<body>
+{{- /* The 404 page is a bare card: no nav, footer, floating button or analytics. */}}
+{{- $chrome := ne .Kind "404" }}
+{{ if $chrome }}{{ partial "nav.html" dict }}
+{{ partial "notice.html" (site.Params.notice | default dict) }}{{ end }}
+
+<main>
+{{ block "main" . }}{{ end }}
+</main>
+
+{{ if $chrome -}}
+{{ partial "footer.html" dict }}
+<button type="button" class="fab btn-sun morph" id="fab" aria-label="{{ site.Params.ctaLabel }}" tabindex="-1" aria-hidden="true">
+  {{ partial "icon.html" (dict "name" "i-mail" "size" 22) }}
+  <span class="fab-label">{{ site.Params.ctaLabel }}</span>
+</button>
+{{ partial "analytics.html" dict }}
+{{- end }}
+</body>
+</html>

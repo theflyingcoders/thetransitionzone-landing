@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="article">
+  {{ partial "crumbs.html" (dict "page" .) }}
+  <h1>{{ .Params.h1 | default .Title }}</h1>
+  <p class="meta">By {{ site.Title }} &middot; Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></p>
+  <p class="intro">{{ .Params.intro }}</p>
+  {{ .Content }}
+  {{ partial "guide-cta.html" (dict "text" .CurrentSection.Params.cta.article) }}
+  <div class="related">
+    <h2>More guides</h2>
+    <ul>
+      {{- range .CurrentSection.Pages }}{{ if ne . $ }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{- end }}{{ end }}
+    </ul>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,9 @@
+# Example "Your Bag" cards. Brand, model and score come from paddles.yaml. The first card starts as Current.
+# note: one sample-data line for the whole bag + compare section.
+owner: "@johndink"
+player: 4.0 doubles player
+cards:
+  - { paddle: joola, held: 6 months in the bag }
+  - { paddle: selkirk, held: 3 months }
+  - { paddle: engage, held: 1 year · retired }
+note: Example paddles and scores. Sample data until we launch.

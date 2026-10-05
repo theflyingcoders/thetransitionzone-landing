@@ -1,0 +1,10 @@
+{{- /*
+  Markdown tables, wrapped in .table-wrap so wide tables scroll on small screens.
+  Column alignment is ignored: the CSS sets it.
+*/ -}}
+<div class="table-wrap"><table>
+<thead>{{ range .THead }}<tr>{{ range . }}<th>{{ .Text }}</th>{{ end }}</tr>{{ end }}</thead>
+<tbody>
+{{ range .TBody }}<tr>{{ range . }}<td>{{ .Text }}</td>{{ end }}</tr>
+{{ end }}</tbody></table></div>
+{{- /**/ -}}

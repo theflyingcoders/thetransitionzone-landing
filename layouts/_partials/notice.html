@@ -1,0 +1,13 @@
+{{- /*
+  Full-width launch notice strip under the nav. baseof passes params.notice from hugo.yaml.
+  Renders nothing when text is empty, so removing the notice block in hugo.yaml removes the strip.
+
+  text      — the notice copy (required; empty = no strip)
+  link_text — the link label; the partial adds " &rarr;" (optional)
+  link_href — the link target, e.g. /#signup. An external URL opens in a new tab (optional)
+*/ -}}
+{{- with .text }}
+<aside class="notice" aria-label="Launch status">
+  <p class="notice__text">{{ . }}{{ with $.link_href }} <a class="notice__link" href="{{ . | relURL }}"{{ if hasPrefix . "http" }} target="_blank" rel="noopener"{{ end }}>{{ $.link_text }} &rarr;</a>{{ end }}</p>
+</aside>
+{{- end }}

@@ -1,0 +1,8 @@
+{{- /*
+  Markdown links. External links (a host other than this site's) open in a new tab with
+  rel="noopener noreferrer". Internal links, anchors and mailto: stay in the same tab.
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $external := and $u.Host (ne $u.Host (urls.Parse site.BaseURL).Host) -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>
+{{- /* no trailing newline: it would put a space before the punctuation that follows */ -}}

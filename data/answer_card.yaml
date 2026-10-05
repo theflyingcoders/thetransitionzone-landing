@@ -1,0 +1,28 @@
+# "Find the paddle" example card. Scores come from paddles.yaml. The page also emits this data as
+# JSON (#ac-data) for site.js, which re-ranks the rows when a chip is pressed.
+initials: JD
+question: I'm a 4.0 doubles player. Want more spin without giving up touch. Budget $250.
+# Chips, in order. `key` is a field of paddles.<id>.scores.
+attributes:
+  - { key: overall, label: Overall }
+  - { key: spin, label: Spin }
+  - { key: control, label: Control }
+  - { key: power, label: Power }
+  - { key: touch, label: Touch }
+# pitch: the row text when ranked by Overall. note: added after the rank line for the other chips.
+picks:
+  - paddle: joola
+    pitch: Highest spin rating from 4.0+ doubles players. 147 verified reviews. $229.
+    note: 147 verified reviews.
+  - paddle: crbn
+    pitch: Slightly softer touch, same spin profile. Edge guard wears faster. $220.
+    note: Edge guard wears faster.
+  - paddle: vatic
+    pitch: "Budget-friendly alternative at $99. Sample size is smaller, so confidence: Medium."
+    note: "Sample size is smaller, so confidence: Medium."
+# Rank lines for 1st, 2nd and 3rd place. {a} is the chip label in lower case.
+rank:
+  - Highest {a} score of the three.
+  - Second on {a}.
+  - Lowest {a} score of the three.
+note: Example results. Scores are sample data until we launch.

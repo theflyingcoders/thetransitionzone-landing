@@ -1,0 +1,10 @@
+# Primary nav (every page except 404) and footer links. `url` is site-relative.
+main:
+  - { label: Features, url: /#features }
+  - { label: Community, url: /#community }
+  - { label: Your Bag, url: /#bag }
+  - { label: Guides, url: /guides/ }
+cta: /#signup   # the "Get early access" button; its label is params.ctaLabel
+footer:
+  - { label: Home, url: / }
+  - { label: Guides, url: /guides/ }

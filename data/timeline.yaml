@@ -1,0 +1,19 @@
+# Example durability timeline. The paddle name and average lifespan come from paddles.yaml.
+paddle: joola
+purchased: Feb 2024
+owners: 89
+start: 6   # slider start month
+points:
+  - month: 3
+    title: '"Still feels brand new"'
+    detail: 82% of owners. Power and touch unchanged.
+  - month: 6
+    title: Edge guard wear begins
+    detail: 61% of owners report minor wear. No performance impact yet.
+  - month: 9
+    title: First dead-spot reports
+    detail: 34% feel a small dead zone at the upper face. Spin starts dropping.
+  - month: 12
+    title: Time to retire
+    detail: 57% have replaced. We wouldn't pay premium money for a 12-month paddle.
+note: Example timeline. Owner numbers are sample data until we launch.
