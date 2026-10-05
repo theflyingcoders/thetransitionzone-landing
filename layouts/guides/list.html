@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{- /* The cards are h3 (home page level). The hidden h2 keeps the heading order h1 > h2 > h3 here. */}}
+<div class="article article--wide">
+  {{ partial "crumbs.html" (dict "page" .) }}
+  <h1>{{ .Params.h1 | default .Title }}</h1>
+  <p class="intro">{{ .Params.intro }}</p>
+  <h2 class="visually-hidden">All guides</h2>
+  <div class="guide-grid">
+    {{- range .Pages }}
+    {{ partial "guide-card.html" (dict "page" .) }}
+    {{- end }}
+  </div>
+  {{ partial "guide-cta.html" (dict "text" .Params.cta.list) }}
+</div>
+{{ end }}

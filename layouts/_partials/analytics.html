@@ -1,0 +1,7 @@
+{{- /*
+  GoatCounter analytics: privacy-friendly, no cookies, no PII. Renders nothing when
+  params.goatcounter is empty. No params (call with an empty dict).
+*/ -}}
+{{- with site.Params.goatcounter }}
+<script data-goatcounter="{{ . }}" async src="//gc.zgo.at/count.js"></script>
+{{- end }}

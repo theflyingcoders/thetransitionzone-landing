@@ -1,0 +1,113 @@
+{{- /*
+  Everything inside <head>: title, SEO meta with fallbacks, icons, fonts, CSS and JS
+  (Hugo Pipes, fingerprinted, with integrity), and JSON-LD.
+
+  page — the current page (required)
+
+  Title: page .Title + " | " + site title (404: params.notFound.title).
+  Description: page .Description, then params.notFound.description (404), then params.description.
+  OG title: front matter ogTitle, then .Title. og:type: article for guides, website otherwise.
+  404: noindex, no canonical, no OG/Twitter, no JSON-LD.
+  JSON-LD: home = Organization, WebSite, WebPage, FAQPage (from data/faq.yaml);
+  section = CollectionPage + BreadcrumbList; page = Article + BreadcrumbList.
+*/ -}}
+{{- $p := .page -}}
+{{- $is404 := eq $p.Kind "404" -}}
+{{- $nf := site.Params.notFound -}}
+{{- $title := cond $is404 $nf.title $p.Title -}}
+{{- $desc := or $p.Description (cond $is404 $nf.description "") site.Params.description -}}
+{{- $home := site.Home.Permalink -}}
+{{- $og := site.Params.ogImage | absURL -}}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ $title }} | {{ site.Title }}</title>
+<meta name="description" content="{{ $desc }}" />
+{{- if $is404 }}
+<meta name="robots" content="noindex, follow" />
+{{- else }}
+<link rel="canonical" href="{{ $p.Permalink }}" />
+<meta name="author" content="{{ site.Title }}" />
+<meta name="publisher" content="{{ site.Title }}" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="apple-mobile-web-app-title" content="{{ site.Title }}" />
+<meta name="application-name" content="{{ site.Title }}" />
+{{- $ogTitle := $p.Params.ogTitle | default $p.Title }}
+<meta property="og:type" content="{{ cond $p.IsPage "article" "website" }}" />
+<meta property="og:site_name" content="{{ site.Title }}" />
+<meta property="og:title" content="{{ $ogTitle }}" />
+<meta property="og:description" content="{{ $desc }}" />
+<meta property="og:url" content="{{ $p.Permalink }}" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="{{ $og }}" />
+<meta property="og:image:secure_url" content="{{ $og }}" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{ site.Params.ogImageAlt }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ $ogTitle }}" />
+<meta name="twitter:description" content="{{ $desc }}" />
+<meta name="twitter:image" content="{{ $og }}" />
+<meta name="twitter:image:alt" content="{{ site.Params.ogImageAlt }}" />
+{{- end }}
+<meta name="theme-color" content="{{ site.Params.themeColor.light }}" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="{{ site.Params.themeColor.dark }}" media="(prefers-color-scheme: dark)" />
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16.png" | relURL }}" />
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}" />
+<link rel="icon" type="image/png" sizes="192x192" href="{{ "icon-192.png" | relURL }}" />
+<link rel="icon" type="image/png" sizes="512x512" href="{{ "icon-512.png" | relURL }}" />
+<link rel="icon" type="image/svg+xml" href="{{ "rp-app-icon.svg" | relURL }}" />
+<link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Hanken+Grotesk:wght@300..900&display=swap" />
+{{- with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{- end }}
+{{- with resources.Get "js/site.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}
+
+{{- if not $is404 }}
+{{- /* Breadcrumbs: the same trail crumbs.html renders. */ -}}
+{{- $crumbs := slice -}}
+{{- range $i, $c := $p.Ancestors.Reverse | append $p -}}
+  {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" (add $i 1) "name" $c.LinkTitle "item" $c.Permalink) -}}
+{{- end -}}
+{{- $breadcrumb := dict "@type" "BreadcrumbList" "itemListElement" $crumbs -}}
+{{- $website := dict "@type" "WebSite" "name" site.Title "url" $home -}}
+{{- $org := dict "@type" "Organization" "name" site.Title "url" $home -}}
+{{- $graph := slice -}}
+{{- if $p.IsHome -}}
+  {{- $faq := slice -}}
+  {{- range site.Data.faq -}}
+    {{- $faq = $faq | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer)) -}}
+  {{- end -}}
+  {{- $graph = slice
+    (merge $org (dict "@id" (print $home "#organization") "description" site.Params.description
+      "logo" (dict "@type" "ImageObject" "url" (site.Params.logo | absURL) "width" 512 "height" 512)))
+    (merge $website (dict "@id" (print $home "#website") "description" site.Params.websiteDescription
+      "publisher" (dict "@id" (print $home "#organization")) "inLanguage" "en"))
+    (dict "@type" "WebPage" "@id" (print $home "#webpage") "url" $home "name" (print $title " | " site.Title)
+      "isPartOf" (dict "@id" (print $home "#website")) "about" (dict "@id" (print $home "#organization"))
+      "description" $desc "inLanguage" "en"
+      "primaryImageOfPage" (dict "@type" "ImageObject" "url" $og "width" 1200 "height" 630))
+    (dict "@type" "FAQPage" "@id" (print $home "#faq") "mainEntity" $faq)
+  -}}
+{{- else if $p.IsSection -}}
+  {{- $graph = slice
+    (dict "@type" "CollectionPage" "name" $title "description" $desc "url" $p.Permalink "inLanguage" "en" "isPartOf" $website)
+    $breadcrumb
+  -}}
+{{- else -}}
+  {{- $graph = slice
+    (dict "@type" "Article" "headline" ($p.Params.h1 | default $title) "description" $desc
+      "datePublished" ($p.Date.Format "2006-01-02") "dateModified" ($p.Lastmod.Format "2006-01-02")
+      "inLanguage" "en" "mainEntityOfPage" $p.Permalink "image" $og "author" $org
+      "publisher" (merge $org (dict "logo" (dict "@type" "ImageObject" "url" (site.Params.logo | absURL)))))
+    $breadcrumb
+  -}}
+{{- end }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>
+{{- end }}

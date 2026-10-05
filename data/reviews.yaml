@@ -1,0 +1,36 @@
+# Example review cards in the "From players who actually own one" section. tag kind: pro | con | tag.
+note: Example reviews. Reviewers and scores are sample data until we launch.
+items:
+  - initials: CS
+    name: Coach Sarah
+    level: "5.0"
+    tier: Expert
+    count: 42
+    score: 9.5
+    body: Easily one of the best control paddles I've played with. The carbon fiber face has a great feel and it rewards placing the ball over hitting it hard. Not cheap.
+    tags:
+      - { text: Excellent control, kind: pro }
+      - { text: Great spin, kind: pro }
+      - { text: Premium price, kind: con }
+  - initials: DM
+    name: DinkMaster_Pro
+    level: "4.5"
+    tier: Gold
+    count: 18
+    score: 9.0
+    body: The CFS surface grips the ball like nothing else I've played. My third shot drops got a lot better inside two sessions. The edge guard is already scuffing, mind.
+    tags:
+      - { text: Great spin, kind: pro }
+      - { text: Soft touch, kind: pro }
+      - { text: Edge guard wear, kind: con }
+  - initials: CQ
+    name: CourtQueenPDX
+    level: "4.0"
+    tier: Silver
+    count: 7
+    score: 9.0
+    body: More forgiving on off-center hits and I still get that dead-ball touch. 16mm suits me since I mostly play doubles. Coming from a CRBN 1X.
+    tags:
+      - { text: Forgiving, kind: pro }
+      - { text: Good pop, kind: pro }
+      - { text: Doubles, kind: tag }

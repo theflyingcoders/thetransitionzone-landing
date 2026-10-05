@@ -1,0 +1,11 @@
+{{- /*
+  Breadcrumb trail: Home / section / page. The current page is plain text.
+  The BreadcrumbList JSON-LD in head.html walks the same .Ancestors, so the two match.
+
+  page — the current page (required)
+*/ -}}
+{{- $p := .page -}}
+<nav class="crumbs" aria-label="Breadcrumb">
+  {{- range $p.Ancestors.Reverse }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> / {{ end -}}
+  {{ $p.LinkTitle -}}
+</nav>

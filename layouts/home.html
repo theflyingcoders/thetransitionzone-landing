@@ -1,0 +1,281 @@
+{{ define "main" }}
+{{- $d := site.Data -}}
+{{- $paddles := $d.paddles -}}
+<!-- Hero -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1 id="hero-heading">Pickleball paddle reviews, <span class="accent">written by you, the players.</span></h1>
+        <p class="lede">
+          Every review comes from a verified owner, with durability tracked at 3, 6, 9 and 12 months.
+          No brand bias, no paid scores.
+        </p>
+      </div>
+      <div>
+        {{ partial "signup-form.html" (dict "id" "signup" "suffix" "hero" "heading" site.Params.ctaLabel
+          "text" "Be first in when we open to the public. No spam, just one launch email.") }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feature 01 -->
+{{- with $d.answer_card }}
+<section class="feature" id="features" aria-labelledby="f1-heading">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <h2 id="f1-heading">Find the paddle<br/>that suits <span class="accent">your game.</span></h2>
+        <p class="lede">
+          Filter by play style, level, budget, and whichever of control, power, spin or touch you care about most.
+          Every paddle is scored on those dimensions and ranked by what verified owners at your level say.
+        </p>
+      </div>
+      <div>
+        <figure class="answer-card panel panel--float" aria-label="Example paddle recommendation">
+          <div class="ac-q">
+            <div class="avatar" aria-hidden="true">{{ .initials }}</div>
+            <div>{{ .question }}</div>
+          </div>
+          <div class="ac-chips" id="ac-chips" role="group" aria-label="Rank paddles by" hidden>
+            {{- range $i, $a := .attributes }}
+            <button type="button" class="chip morph" data-attr="{{ $a.key }}" aria-pressed="{{ cond (eq $i 0) "true" "false" }}"><span class="ck" aria-hidden="true">{{ partial "icon.html" (dict "name" "i-check" "size" 14) }}</span>{{ $a.label }}</button>
+            {{- end }}
+          </div>
+          <div class="ac-answers" id="ac-answers" aria-live="polite">
+            {{- /* Rows start in Overall order. $js is the same data for site.js (one source). */}}
+            {{- $js := dict }}
+            {{- $picks := slice }}
+            {{- range .picks }}{{ $picks = $picks | append (merge . (dict "overall" (index $paddles .paddle).scores.overall)) }}{{ end }}
+            {{- range sort $picks "overall" "desc" }}
+            {{- $p := index $paddles .paddle }}
+            {{- $name := print $p.brand " " $p.model }}
+            {{- $js = merge $js (dict .paddle (merge $p.scores (dict "name" $name "note" .note "price" (printf "$%d" $p.price) "pitch" .pitch))) }}
+            <div class="ac-step" data-paddle="{{ .paddle }}">
+              <div class="check" aria-hidden="true">{{ partial "icon.html" (dict "name" "i-check") }}</div>
+              <div class="step-text">
+                <div class="step-title">{{ $name }} &middot; {{ printf "%.1f" $p.scores.overall }}</div>
+                <div class="step-desc">{{ .pitch }}</div>
+              </div>
+            </div>
+            {{- end }}
+          </div>
+          {{ partial "sample-note.html" (dict "text" .note "class" "ac-note") }}
+          <script type="application/json" id="ac-data">{{ dict "paddles" $js "rank" .rank | jsonify | safeJS }}</script>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<!-- Feature 02 -->
+{{- with $d.reviews }}
+<section class="feature dark" id="community" aria-labelledby="f2-heading">
+  <div class="container">
+    <div class="section-head section-head--flush">
+      <h2 id="f2-heading">From players<br/>who actually <span class="accent">own one.</span></h2>
+      <p class="lede">
+        Every review is tied to a verified owner. Reviewers earn trust over time: the more accurate
+        their track record, the more their scores count. Experts and creators get their own transparent tier.
+      </p>
+    </div>
+
+    <div class="reviews">
+      {{- range .items }}
+      <div class="review">
+        <div class="review-head">
+          <div class="avatar avatar--lg" aria-hidden="true">{{ .initials }}</div>
+          <div class="review-meta">
+            <div class="u">{{ .name }}</div>
+            <div class="l">{{ .level }} &middot; {{ .tier }} &middot; {{ .count }} reviews</div>
+          </div>
+          <div class="review-stars">
+            {{ partial "icon.html" (dict "name" "i-star" "size" 14) }}
+            <span class="n">{{ printf "%.1f" .score }}</span>
+          </div>
+        </div>
+        <p class="review-body">{{ .body }}</p>
+        <div class="review-tags">
+          {{- range .tags }}
+          <span class="pill {{ .kind }}">{{ .text }}</span>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </div>
+    {{ partial "sample-note.html" (dict "text" .note) }}
+  </div>
+</section>
+{{- end }}
+
+<!-- Feature 03 -->
+{{- with $d.timeline }}
+{{- $p := index $paddles .paddle }}
+<section class="feature warm" aria-labelledby="f3-heading">
+  <div class="container">
+    <div class="grid-2 reverse">
+      <div>
+        <h2 id="f3-heading">We track <span class="accent">how long</span> a paddle lasts.</h2>
+        <p class="lede">
+          We ping you at 3, 6, 9 and 12 months to ask how it's holding up. Edge guard? Dead spots?
+          Those answers become the durability rating.
+        </p>
+      </div>
+      <div>
+        <figure class="timeline panel" aria-label="Example paddle durability timeline">
+          <div class="tl-head">
+            <div>
+              <div class="tl-paddle-name">{{ $p.brand }} {{ $p.model }}</div>
+              <div class="tl-paddle-sub">Purchased {{ .purchased }} &middot; {{ .owners }} owners reporting</div>
+            </div>
+            <div class="badge">Avg. lifespan &middot; {{ $p.lifespan }}mo</div>
+          </div>
+          <div class="tl-slider" hidden>
+            <div class="tl-slider-head">
+              <span id="own-label">Drag through ownership</span>
+              <output id="own-out" for="own-months">Month {{ .start }}</output>
+            </div>
+            <input type="range" id="own-months" min="0" max="12" step="1" value="{{ .start }}" aria-label="Months of ownership" />
+          </div>
+          <div class="tl-rail">
+            {{- range .points }}
+            <div class="tl-point" data-month="{{ .month }}">
+              <div class="kicker tl-when">Month {{ .month }} check-in</div>
+              <div class="tl-event">{{ .title }}
+                <small>{{ .detail }}</small>
+              </div>
+            </div>
+            {{- end }}
+          </div>
+          {{ partial "sample-note.html" (dict "text" .note) }}
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<!-- Feature 04 -->
+<section class="feature" id="bag" aria-labelledby="f4-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="f4-heading">Every paddle you've owned,<br/><span class="accent">side by side.</span></h2>
+      <p class="lede">
+        Keep a public bag of every paddle you've owned, retired ones included, with your review of each.
+        Pick any two and compare them head to head on every spec, score and dimension.
+      </p>
+    </div>
+
+    <div class="bag-compare">
+      {{- with $d.bag }}
+      <div>
+        <div class="kicker kicker--tight">{{ .owner }}'s bag</div>
+        <div class="bag-heading">{{ len .cards }} paddles &middot; {{ .player }}</div>
+        <div class="bag">
+          {{- range $i, $c := .cards }}
+          {{- $p := index $paddles $c.paddle }}
+          <button type="button" class="card morph bag-card{{ if eq $i 0 }} current{{ end }}" aria-pressed="{{ cond (eq $i 0) "true" "false" }}">
+            <span class="bag-top">
+              <span class="bag-thumb" aria-hidden="true"></span>
+              <span class="bag-score">{{ printf "%.1f" $p.scores.overall }}</span>
+            </span>
+            <span class="bag-id">
+              <span class="kicker bag-flag">&blacktriangleright; Current</span>
+              <span class="kicker bag-brand">{{ $p.brand }}</span>
+              <span class="bag-name">{{ $p.model }}</span>
+            </span>
+            <span class="bag-dur">{{ $c.held }}</span>
+          </button>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+
+      {{- with $d.compare }}
+      {{- $cols := .columns }}
+      <div>
+        <div class="kicker">&harr; Compare</div>
+        <div class="compare panel" role="table" aria-label="Side-by-side paddle comparison">
+          <div class="compare-head" role="row">
+            <div role="columnheader">
+              <div class="kicker col-brand">Filter by</div>
+              <div class="col-name">Side by side</div>
+            </div>
+            {{- range $cols }}
+            {{- $p := index $paddles . }}
+            <div{{ if eq . $d.compare.winner }} class="winner"{{ end }} role="columnheader">
+              <div class="kicker col-brand">{{ $p.brand }}</div>
+              <div class="col-name">{{ $p.model }}</div>
+            </div>
+            {{- end }}
+          </div>
+          {{- range .rows }}
+          {{- $row := . }}
+          {{- $vals := slice }}
+          {{- range $cols }}
+          {{- $p := index $paddles . }}
+          {{- $vals = $vals | append (index $p $row.field | default (index $p.scores $row.field)) }}
+          {{- end }}
+          {{- $sorted := sort $vals }}
+          {{- $best := cond (eq $row.better "low") (index $sorted 0) (index $sorted (sub (len $sorted) 1)) }}
+          <div class="compare-row" role="row">
+            <div class="label" role="rowheader">{{ .label }}</div>
+            {{- range $vals }}
+            <div class="v{{ if eq . $best }} win{{ end }}" role="cell">{{ printf ($row.format | default "%.1f") . }}</div>
+            {{- end }}
+          </div>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </div>
+    {{ partial "sample-note.html" (dict "text" $d.bag.note) }}
+  </div>
+</section>
+
+<!-- Guides -->
+<section class="feature warm" id="guides" aria-labelledby="guides-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="guides-heading">Not sure what to look for? <span class="accent">Start here.</span></h2>
+      <p class="lede">Plain-English guides to the things that change how a paddle plays: weight, core thickness, face material and how long a paddle lasts.</p>
+    </div>
+    <div class="guide-grid">
+      {{- range (site.GetPage "/guides").Pages }}
+      {{ partial "guide-card.html" (dict "page" .) }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ: the same data feeds the FAQPage JSON-LD in head.html -->
+<section class="feature" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="faq-heading">Pickleball paddle <span class="accent">questions.</span></h2>
+    </div>
+    <div class="faq">
+      {{- range $d.faq }}
+      <details>
+        <summary>{{ .question }}</summary>
+        <p>{{ .answer }}{{ with .more }} {{ $.RenderString . }}{{ end }}</p>
+      </details>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" aria-labelledby="final-heading">
+  <div class="container">
+    <h2 id="final-heading">What's your <span class="accent">next</span> paddle?</h2>
+    <p class="lede">
+      Sign up below to join the beta. We'll send one email when the public launch lands.
+    </p>
+    {{ partial "signup-form.html" (dict "id" "signup-final" "suffix" "final" "heading" site.Params.ctaLabel "level" 3
+      "text" "One launch email, no spam. Unsubscribe in one click.") }}
+  </div>
+</section>
+{{ end }}

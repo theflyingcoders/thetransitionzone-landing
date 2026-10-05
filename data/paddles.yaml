@@ -1,0 +1,28 @@
+# Sample paddle data shown on the home page until launch. One entry per paddle, keyed by id.
+# answer_card, bag, compare and timeline refer to these ids, so each number lives here once.
+# lifespan: average months before owners replace it. price: US dollars.
+joola:
+  brand: JOOLA
+  model: Hyperion CFS 16
+  price: 229
+  lifespan: 8
+  scores: { overall: 9.2, spin: 9.0, control: 9.4, power: 8.1, touch: 9.0 }
+crbn:
+  brand: CRBN
+  model: 1X 16mm
+  price: 220
+  lifespan: 10
+  scores: { overall: 9.0, spin: 8.8, control: 9.1, power: 8.4, touch: 9.2 }
+vatic:
+  brand: Vatic Pro
+  model: V7
+  price: 99
+  scores: { overall: 8.7, spin: 8.5, control: 8.6, power: 8.9, touch: 8.4 }
+selkirk:
+  brand: Selkirk
+  model: Vanguard Power Air
+  scores: { overall: 8.8 }
+engage:
+  brand: Engage
+  model: Pursuit Pro MX
+  scores: { overall: 8.5 }

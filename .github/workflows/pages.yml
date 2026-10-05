@@ -1,0 +1,73 @@
+# Build on every push, PR and manual run. Deploy only on push to main
+# AND when the repository variable DEPLOY_ENABLED is 'true' (unset = no deploy).
+# Hugo version: read from module.hugoVersion.min in hugo.yaml (the one place).
+# Actions: pinned to major version tags (GitHub-owned actions only).
+name: pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Hugo (version from hugo.yaml)
+        run: |
+          v=$(grep -A1 'hugoVersion:' hugo.yaml | sed -n 's/.*min: *"\([^"]*\)".*/\1/p')
+          test -n "$v" || { echo "no module.hugoVersion.min in hugo.yaml"; exit 1; }
+          curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${v}/hugo_${v}_linux-amd64.tar.gz" | tar -xz -C "$RUNNER_TEMP" hugo
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/hugo" version | grep -q "v${v}" || { echo "wrong Hugo version"; exit 1; }
+
+      - name: Build
+        run: hugo --gc --minify --environment production --panicOnWarning
+
+      - name: Check public/
+        run: |
+          set -euo pipefail
+          for f in index.html 404.html sitemap.xml robots.txt llms.txt CNAME; do
+            test -s "public/$f" || { echo "missing: public/$f"; exit 1; }
+          done
+          if grep -rlE '\{\{|@partial' --include='*.html' public; then
+            echo "template code left in HTML (files above)"; exit 1
+          fi
+          base=$(sed -n 's/^baseURL: *//p' hugo.yaml)
+          bad=0
+          for link in $(grep -rohE '(href|src)=("[^"]*"|[^ >"]+)' --include='*.html' public \
+              | sed -E 's/^(href|src)=//; s/^"//; s/"$//; s/[?#].*//' \
+              | sed "s#^${base}#/#" | grep -E '^/([^/]|$)' | sort -u); do
+            p="public$link"
+            [[ $p == */ ]] && p="${p}index.html"
+            [ -f "$p" ] || [ -f "$p/index.html" ] || { echo "broken link: $link"; bad=1; }
+          done
+          exit $bad
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

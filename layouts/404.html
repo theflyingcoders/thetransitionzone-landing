@@ -1,0 +1,18 @@
+{{- /* Copy: params.notFound. baseof.html leaves out the nav, footer, floating button and analytics here. */ -}}
+{{ define "main" }}
+{{- with site.Params.notFound }}
+<section class="hero" aria-labelledby="nf-heading">
+  <div class="container">
+    <div class="notfound">
+      <a href="{{ "/" | relURL }}" class="notfound__logo" aria-label="{{ site.Title }} home">
+        {{ partial "icon.html" (dict "name" "rp-mark" "size" 72) }}
+      </a>
+      <div class="eyebrow badge badge--pill"><span class="dot" aria-hidden="true"></span> 404</div>
+      <h1 id="nf-heading">{{ .title }}</h1>
+      <p class="lede">{{ .lede }}</p>
+      <a href="{{ "/" | relURL }}" class="nav-cta morph">{{ .button }} &rarr;</a>
+    </div>
+  </div>
+</section>
+{{- end }}
+{{ end }}

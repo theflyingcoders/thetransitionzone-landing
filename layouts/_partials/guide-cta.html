@@ -1,0 +1,11 @@
+{{- /*
+  The dark "get early access" box at the end of the guides index and of every guide.
+  Heading and texts come from the cta block in content/guides/_index.md.
+
+  text — the paragraph (required)
+*/ -}}
+<aside class="guide-cta dark-card">
+  <h2>{{ (site.GetPage "/guides").Params.cta.heading }}</h2>
+  <p>{{ .text }}</p>
+  <a class="btn-sun morph" href="{{ site.Data.nav.cta | relURL }}">{{ site.Params.ctaLabel }} &rarr;</a>
+</aside>

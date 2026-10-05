@@ -1,0 +1,9 @@
+{{- /*
+  The RallyProof lockup: logo mark plus the "RallyProof" word. The caller wraps it
+  (a link in the nav, a row in the footer).
+
+  mark — sprite id: rp-mark (light ground, default) or rp-mark-dk (dark ground)
+*/ -}}
+{{ partial "icon.html" (dict "name" (.mark | default "rp-mark") "size" 38) }}
+<span class="word">Rally<span>Proof</span></span>
+{{- /**/ -}}

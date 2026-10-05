@@ -1,0 +1,12 @@
+# Side-by-side compare table. Values come from paddles.yaml; the better value in each row is marked.
+# field: overall, a score key, price or lifespan. better: high (default) or low.
+# format: printf pattern for the value (default %.1f).
+columns: [joola, crbn]
+winner: joola
+rows:
+  - { label: Community score, field: overall }
+  - { label: Control, field: control }
+  - { label: Spin, field: spin }
+  - { label: Power, field: power }
+  - { label: Durability (avg.), field: lifespan, format: "%d months" }
+  - { label: Price, field: price, better: low, format: "$%d" }

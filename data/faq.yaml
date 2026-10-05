@@ -1,0 +1,14 @@
+# Home page FAQ. `answer` is plain text and feeds both the visible answer and the FAQPage JSON-LD.
+# `more` (optional, Markdown) is a follow-up sentence shown on the page only, usually a guide link.
+- question: How do I choose a pickleball paddle?
+  answer: Start with how you play and what you want to fix. Doubles players who live at the kitchen line usually want control and touch, which points to a thicker core and a carbon fiber face. Players who want more power usually look at thinner cores and heavier or elongated paddles. Then check weight, grip size and, if you play sanctioned events, that the paddle is approved.
+  more: Our [guide to choosing a pickleball paddle](/guides/how-to-choose-a-pickleball-paddle/) goes through each step.
+- question: How long does a pickleball paddle last?
+  answer: It depends on how often you play and how you treat the paddle. Frequent players often notice less pop or spin within a year, and edge guards and cores can fail sooner. We do not have our own numbers yet. When we launch, we will ask owners how their paddle is holding up at 3, 6, 9 and 12 months.
+  more: Read more in [how long pickleball paddles last](/guides/how-long-do-pickleball-paddles-last/).
+- question: Are pickleball paddle reviews biased?
+  answer: Many are. Reviewers are often given free paddles or earn a commission on links, and that can shape the score. RallyProof ties every review to a verified owner, takes no payment for scores, and keeps creator and partner content separate from the community score.
+- question: When does RallyProof launch?
+  answer: There is no date yet. Join the list and we will send one email when the public launch lands.
+- question: I make pickleball content. Can I work with RallyProof?
+  answer: Yes. Tick the creator box on either signup form and our team will contact you about reviewer partnerships.

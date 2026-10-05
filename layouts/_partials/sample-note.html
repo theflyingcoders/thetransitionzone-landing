@@ -1,0 +1,7 @@
+{{- /*
+  The small grey "sample data" line under a home-page mock-up. Text comes from the `note` key in data/.
+
+  text  — the note (required)
+  class — sample-note (default) or ac-note (the answer-card form, with card padding)
+*/ -}}
+<p class="{{ .class | default "sample-note" }}">{{ .text }}</p>

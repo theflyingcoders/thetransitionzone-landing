@@ -1,0 +1,10 @@
+{{- /*
+  One icon or logo mark from the sprite (assets/sprite.svg, the one source for all of them).
+  The sprite is fingerprinted, so a changed icon busts the browser cache.
+
+  name — symbol id in the sprite: rp-mark, rp-mark-dk, i-check, i-star, i-mail, i-lock (required)
+  size — width and height in px (optional; leave it out when CSS sizes the icon)
+*/ -}}
+{{- $sprite := resources.Get "sprite.svg" | minify | fingerprint -}}
+<svg{{ with .size }} width="{{ . }}" height="{{ . }}"{{ end }} aria-hidden="true"><use href="{{ $sprite.RelPermalink }}#{{ .name }}"/></svg>
+{{- /**/ -}}

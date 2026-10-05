@@ -1,0 +1,17 @@
+{{- /*
+  Site footer. Links from data/nav.yaml (footer), tagline from params.tagline.
+  site.js fills [data-year]. No params (call with an empty dict).
+*/ -}}
+<footer class="foot">
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-brand-row">
+        {{ partial "logo.html" (dict "mark" "rp-mark-dk") }}
+      </div>
+      <p class="foot-tag">{{ site.Params.tagline }}</p>
+      <p class="foot-meta">
+        {{- range site.Data.nav.footer }}<a href="{{ .url | relURL }}">{{ .label }}</a> &middot; {{ end -}}
+        &copy; <span data-year></span> {{ site.Title }}</p>
+    </div>
+  </div>
+</footer>

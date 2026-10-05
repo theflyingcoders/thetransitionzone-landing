@@ -1,0 +1,63 @@
+baseURL: https://rallyproof.app/
+title: RallyProof
+languageCode: en-us
+enableRobotsTXT: true
+disableHugoGeneratorInject: true
+disableKinds: [taxonomy, term, rss]
+
+module:
+  hugoVersion:
+    min: "0.158.0"
+
+# Dates come from front matter only: `lastmod` drives the visible "Updated" date and the sitemap.
+frontmatter:
+  lastmod: [lastmod, date]
+
+markup:
+  goldmark:
+    parser:
+      autoHeadingID: false     # the guide markup has no heading ids
+    extensions:
+      typographer:
+        disable: true          # keep straight quotes and apostrophes, as written
+
+outputFormats:
+  llms:
+    mediaType: text/plain
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
+
+outputs:
+  home: [html, llms]
+  section: [html]
+  page: [html]
+
+sitemap:
+  changeFreq: ""
+  priority: -1
+  filename: sitemap.xml
+
+params:
+  description: Community pickleball paddle reviews from verified owners, with durability tracking. No brand bias, no paid scores.
+  websiteDescription: Community pickleball paddle reviews from verified owners.
+  tagline: Equipment reviews by the pickleball community.
+  ogImage: og-default.png
+  ogImageAlt: "RallyProof: community pickleball paddle reviews"
+  logo: icon-512.png
+  ctaLabel: Get early access
+  formspree: https://formspree.io/f/xaqvlgvw
+  goatcounter: https://thetransitionzone.goatcounter.com/count
+  themeColor:
+    light: "#ffffff"
+    dark: "#232628"
+  # Launch notice strip under the nav (_partials/notice.html). Delete this block to remove it.
+  notice:
+    text: Pre-launch. Join the list and we will send one email when we open.
+    link_text: Join          # the template adds the arrow
+    link_href: /#signup
+  notFound:
+    title: Page not found
+    description: That page doesn't exist (yet). RallyProof is a pre-launch home for community pickleball paddle reviews from verified owners.
+    lede: That URL doesn't exist on RallyProof. The site is still pre-launch, so head back to the homepage and join the early-access list.
+    button: Back to home

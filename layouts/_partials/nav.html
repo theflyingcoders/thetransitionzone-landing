@@ -1,0 +1,17 @@
+{{- /*
+  Primary nav. Links come from data/nav.yaml; the CTA label from params.ctaLabel.
+  No params (call with an empty dict).
+*/ -}}
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="{{ "/" | relURL }}" class="nav-brand" aria-label="{{ site.Title }} home">
+      {{ partial "logo.html" dict }}
+    </a>
+    <div class="nav-links">
+      {{- range site.Data.nav.main }}
+      <a href="{{ .url | relURL }}">{{ .label }}</a>
+      {{- end }}
+      <a href="{{ site.Data.nav.cta | relURL }}" class="nav-cta morph">{{ site.Params.ctaLabel }}</a>
+    </div>
+  </div>
+</nav>

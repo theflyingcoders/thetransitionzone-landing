@@ -1,0 +1,12 @@
+{{- /*
+  One guide card (home page guides section and the guides index).
+
+  page — the guide page (required). Uses .Title and the `card` front matter blurb.
+*/ -}}
+{{- with .page }}
+<a class="card morph guide-card" href="{{ .RelPermalink }}">
+  <h3>{{ .Title }}</h3>
+  <p>{{ .Params.card }}</p>
+  <span class="more">Read the guide &rarr;</span>
+</a>
+{{- end }}

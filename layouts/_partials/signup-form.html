@@ -1,0 +1,35 @@
+{{- /*
+  Email signup form, posting to Formspree (params.formspree). site.js rewrites _next on
+  submit (adds &creator=1 and the form's #id) and shows .ok-msg on return with ?ok=1.
+
+  id      — form id, the anchor _next returns to: "signup" (hero) or "signup-final" (required)
+  suffix  — id suffix for the email, checkbox and message ids: "hero" or "final" (required)
+  heading — the form title (required)
+  level   — heading level, 2 or 3, so it fits the page outline (default 2)
+  text    — the line under the title (required)
+*/ -}}
+<form class="email-form dark-card" id="{{ .id }}" action="{{ site.Params.formspree }}" method="POST">
+  {{ if eq (.level | default 2) 3 }}<h3>{{ .heading }}</h3>{{ else }}<h2>{{ .heading }}</h2>{{ end }}
+  <p>{{ .text }}</p>
+  <div class="email-row">
+    <label for="email-{{ .suffix }}" class="visually-hidden">Email address</label>
+    <input type="email" id="email-{{ .suffix }}" name="email" placeholder="you@yourcourt.com" required autocomplete="email" />
+    <button type="submit" class="btn-sun morph">Join &rarr;</button>
+  </div>
+  <label class="creator-check">
+    <input type="checkbox" id="creator-{{ .suffix }}" name="creator" value="yes" />
+    <span>
+      <strong>I create pickleball content.</strong>
+      I'd like {{ site.Title }} to contact me about reviewer partnerships.
+    </span>
+  </label>
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
+  <input type="hidden" name="_next" value="{{ site.Home.Permalink }}?ok=1" />
+  <div class="form-note">
+    {{ partial "icon.html" (dict "name" "i-lock" "size" 14) }}
+    Your email is private. We'll never sell it.
+  </div>
+  <div class="ok-msg" id="ok-{{ .suffix }}" role="status" aria-live="polite" hidden>
+    <strong>You're in.</strong> We'll email you when we launch.
+  </div>
+</form>
